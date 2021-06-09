@@ -1,0 +1,274 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
+@import './variable';
+
+* {
+    box-sizing: border-box;
+    padding: 0; margin: 0;
+    font-family: "Raleway", sans-serif; // 400 700
+    font-size: 14px;
+    *:focus {
+        outline: none;
+    }
+}
+
+body {
+    width: 100vw; height: 100vh;
+    background: $Very_Dark_Blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    & > img:nth-child(1) {
+        position: absolute; z-index: -1;
+        left: 0; right: 0; 
+        bottom: 0;
+        width: 100%; height: 50%;
+        object-fit: cover;
+        object-position: top;
+    }
+    & > img:nth-child(2) {
+        display: none;
+    }
+}
+
+.compo__container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    max-width: 1140px; min-width: 325px;
+    width: 90%;
+}
+
+.compo__left {
+    @include dropShadow;
+    transition: 300ms ease-in-out;
+    background: $Dark_Blue;
+    margin-right: 50px;
+    padding: 50px 40px 55px 50px;
+    width: 430px; height: 260px;
+    border-radius: 15px 120px 15px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    &__logo {
+        img {
+            width: 170px;
+        }
+    }
+    &__icon {
+        display: flex;
+        justify-self: flex-end;
+        div {
+            border-radius: 10px;
+            width: 60px; height: 60px;
+            background: $Very_Dark_Blue;
+            @include flexCenter;
+        }
+        & div:nth-child(1) {
+            img {width: 25px;}
+        }
+        & div:nth-child(2) {
+            margin-left: 15px;
+            img {width: 30px;}
+        }
+        & div:nth-child(3) {
+            margin-left: 15px;
+            img {width: 35px;}
+        }
+    }
+}
+
+
+.compo__right {
+    @include dropShadow;
+    transition: 300ms ease-in-out;
+    position: relative;
+    background: $Dark_Blue;
+    width: 600px; height: 200px;
+    padding: 60px 40px;
+    border-radius: 15px;
+    &__tag {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        right: 40px; top: -55px;
+        transition: 300ms ease-in-out;
+        & div:first-child {
+            @include flexCenter;
+            background: white;
+            width: 200px; height: 90px;
+            border-radius: 15px;
+            transition: 300ms ease-in-out;
+            h1 {
+                font-size: 3.5em;
+                font-weight: 700;
+                color: $Very_Dark_Blue;
+                margin-right: 10px;
+            }
+            p {
+                font-size: 1em;
+                font-weight: 700;
+                text-transform: uppercase;
+                color: $Grayish_Blue;
+            }
+        }
+        & div:last-child {
+            position: relative;
+            top: -20px;
+            width: 0; height: 0;
+            border-top: 50px solid white;
+            border-left: 48px solid transparent;
+            border-bottom: 10px solid transparent;
+        }
+    }
+    & > p {
+        color: $Pale_Blue;
+        span {
+            font-weight: 700;
+        }
+    }
+    &__slider {
+        margin-top: 20px;
+        width: 100%;
+        background: $Very_Dark_Blue;
+        border-radius: 15px;
+        padding: 3px;
+        & > div {
+            position: relative;
+            width: 100%;
+        }
+    }
+    &__num {
+        margin-top: 10px;
+        display: flex;
+        justify-content: space-between;
+        p {
+            font-size: 1em;
+            font-weight: 700;
+            color: $Pale_Blue;
+        }
+    }
+}
+
+#slider_range {
+    -webkit-appearance: none;
+    appearance: none;
+    display: block;
+    background: transparent;
+    width: 100%; height: 15px;
+    border-radius: 15px;
+}
+
+#slider_bg {
+    pointer-events: none;
+    position: absolute;
+    width: 75%; height: 100%;
+    top: 0; bottom: 0;
+    background: linear-gradient(90deg,hsl(6, 100%, 80%), hsl(335, 100%, 65%));
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    div {
+        position: absolute;
+        width: 10px; height: 10px;
+        border-radius: 100%;
+        background: white;
+        right: 2px;
+    }
+}
+
+#slider_range::-webkit-slider-thumb {
+    display: none; opacity: 0;
+    visibility: hidden;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+#slider_range::-moz-range-thumb {
+    display: none; opacity: 0;
+    visibility: hidden;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+@media screen and (max-width: 1140px) {
+    .compo__container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .compo__left {
+        flex-direction: row;
+        align-items: center;
+        border-radius: 15px;
+        padding: 0 40px;
+        width: fit-content; height: 100px;
+        margin: 0 0 25px 0 ;
+        &__logo {
+            margin-right: 30px;
+            img {width: 120px;}
+        }
+        &__icon {
+            div {width: 50px; height: 50px;}
+        }
+    }
+    .compo__right {
+        padding: 40px 40px 60px 40px;
+        height: max-content;
+        &__tag {
+            right: initial; top: initial;
+            bottom: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            & div:first-child {
+                height: 100px; width: 200px;
+            }
+            & div:last-child {
+                display: none;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 500px) {
+    body {
+        position: relative;
+        & > img:nth-child(1) {
+            display: none;
+        }
+        & > img:nth-child(2) {
+            display: initial;
+            position: absolute; z-index: -1;
+            width: 100%; height: 100%;
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .compo__left {
+        margin-bottom: 15px;
+        padding: 20px 25px;
+        width: 100%;
+    }
+    .compo__right {
+        padding: 20px 25px 60px 25px;
+        width: 100%;
+        &__tag {
+            bottom: -40px;
+            & div:first-child {
+                height: 80px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .compo__left {
+        border-radius: 15px 80px 15px 15px;
+        height: max-content;
+        flex-direction: column;
+        align-items: initial;
+        &__logo {
+            margin-bottom: 15px;
+        }
+    }
+}
